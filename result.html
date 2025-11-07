@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sentiment Results</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            text-align:center; 
+            background:#f5f7fa;
+            margin:0; 
+            padding:0;
+        }
+        .container {
+            margin-top:60px;
+            background:white;
+            padding:30px;
+            border-radius:12px;
+            box-shadow:0 0 15px rgba(0,0,0,0.1);
+            display:inline-block;
+        }
+        h1 {
+            color:#333;
+        }
+        h3 {
+            color:#555;
+        }
+        img { 
+            width:400px; 
+            border-radius:10px; 
+            margin:20px; 
+            box-shadow:0 0 10px #ccc; 
+        }
+        a { 
+            text-decoration:none; 
+            color:#4CAF50; 
+            font-size:18px; 
+        }
+        a:hover { 
+            color:#388E3C; 
+        }
+        footer {
+            margin-top:40px;
+            color:gray;
+            font-size:14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        {% if error %}
+            <h2>{{ error }}</h2>
+            <a href="/">🔙 Back</a>
+        {% else %}
+            <h1>Results for {{ stock }}</h1>
+            <h3>Average Sentiment Score: {{ avg_score }}</h3>
+            <p>
+                <strong>Positive:</strong> {{ sentiment_counts['Positive'] if 'Positive' in sentiment_counts else 0 }} |
+                <strong>Neutral:</strong> {{ sentiment_counts['Neutral'] if 'Neutral' in sentiment_counts else 0 }} |
+                <strong>Negative:</strong> {{ sentiment_counts['Negative'] if 'Negative' in sentiment_counts else 0 }}
+            </p>
+
+            <div>
+                <img src="/static/sentiment_pie.png" alt="Sentiment Pie Chart">
+                <img src="/static/wordcloud.png" alt="Word Cloud">
+            </div>
+
+            <a href="/index.html">🔙 Analyze Another Stock</a>
+        {% endif %}
+    </div>
+
+    <footer>
+        Developed by Dipesh Chaturvedi | Final Year Project
+    </footer>
+</body>
+</html>
