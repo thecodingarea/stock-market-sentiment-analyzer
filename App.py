@@ -14,8 +14,12 @@ app = Flask(__name__)
 nltk.download('vader_lexicon')
 
 # ========== CONFIGURATION ==========
-BEARER_TOKEN = "YOUR_TWITTER_BEARER_TOKEN"
-client = tweepy.Client(bearer_token=BEARER_TOKEN)
+BEARER_TOKEN = "AAAAAAAAAAAAAAAAAAAAANNS5QEAAAAApC0KeOAM0qWtMEmHb9c9CCeGBZE%3DGJP3mApBrTSmW09HKx6xbcfHGaQEOksv5sUruvMvR5p5ZalpWu"
+
+"
+
+client = tweepy.Client(bearer_token="BEARER TOKEN")
+
 
 
 # ========== ROUTES ==========
@@ -70,4 +74,5 @@ def analyze():
     plt.close()
 
     avg_score = round(df['compound'].mean(), 3)
+
     return render_template('result.html', stock=stock_name, sentiment_counts=sentiment_counts.to_dict(), avg_score)
